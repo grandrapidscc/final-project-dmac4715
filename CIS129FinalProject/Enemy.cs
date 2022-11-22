@@ -17,19 +17,13 @@ public class Enemy
 		_health = health;
 		_damage = damage;
     }
-
-	public void Attack()
+	public int GetDamage()
 	{
-		bool endAttack = false;
-		//while(endAttack == false)
-		//{
-			Console.WriteLine($"{_name} used {_attack}");
-			if (_health <= 0)
-			{
-                endAttack = true;
-            }
-			
-		//}
+		return _damage;
+	}
+	public int GetHealth()
+	{
+		return _health;	
 	}
     public string GetPosition()
     {
@@ -38,6 +32,11 @@ public class Enemy
 	public string GetName()
 	{
 		return _name; 
+	}
+	public void TakeDamage()
+	{
+		_health -= 5;
+		Console.WriteLine(this._name + " took 5 damage");
 	}
 
 }

@@ -76,9 +76,38 @@ public class Wizert
 	{
 		return "(" + _position[0, 0] + ", " + _position[0, 1] + ")";
 	}
+    public int GetHealth()
+    {
+        return _health;
+    }
     public void TakeDamage(int damage)
     {
-        _health -= damage;
+        if (_health < damage)
+        {
+            damage = _health;
+
+        }
+        _health = damage;
+        Console.WriteLine($"Wizert took {damage} damage, current health: " + _health);
+
+
+    }
+    public void UseMagicka(int amount)
+    {
+        if (_magicka > 0)
+        {
+            _magicka -= amount;
+        }
+        else
+        {
+            Console.WriteLine("Not enough Magicka power to use that spell.");
+        }
+    }
+        
+    public void Heal()
+    {
+        _health += 3;
+        Console.WriteLine("You have gained 3 health points, current health: " + _health);
     }
 		
     //Fireball

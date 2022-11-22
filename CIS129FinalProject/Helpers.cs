@@ -4,11 +4,9 @@ public static class Helpers
 {
     public static void PrintMenu()
     {
-        Console.WriteLine("|^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^|");
-        Console.WriteLine("|\tThe Wizert --                      |");
-        Console.WriteLine("|\tDungeon Escape Text Adventure      |");
-        Console.WriteLine("|^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^|");
-        Console.WriteLine("|^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^|\n");
+        Console.WriteLine("The Wizert --");
+        Console.WriteLine("\tDungeon Escape Text Adventure");
+        Console.WriteLine("\n");
         Console.WriteLine("\t1 - New Game");
         Console.WriteLine("\t2 - How to Play");
         Console.WriteLine("\t3 - Exit");
@@ -41,6 +39,13 @@ public static class Helpers
         Console.WriteLine("\t2 - East");
         Console.WriteLine("\t3 - South");
         Console.WriteLine("\t4 - West");
+    }
+    public static void PrintActionMenu()
+    {
+        Console.WriteLine("Choose an Action:");
+        Console.WriteLine("\t1 - Attack");
+        Console.WriteLine("\t2 - Heal");
+        Console.WriteLine("\t3 - Flee");
     }
     public static int GetValidInt()
     {

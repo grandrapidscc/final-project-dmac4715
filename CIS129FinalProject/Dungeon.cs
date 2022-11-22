@@ -48,9 +48,12 @@ public class Dungeon
 		{
 			hero.Move(userInt);
 			CheckInteractions();
-			Helpers.PrintDirMenu();
-			userInt = Helpers.GetValidInt();
-			CheckForWin(userInt);
+			if (GameOver == false)
+			{
+				Helpers.PrintDirMenu();
+				userInt = Helpers.GetValidInt();
+				CheckForWin(userInt);
+			}
 		}
 		if (isSuccess == true)
 		{
@@ -73,13 +76,68 @@ public class Dungeon
 	{
 		foreach(Enemy enemy in EnemyList)
 		{
-			if (enemy.GetPosition() == hero.GetPosition())
+			if (enemy.GetPosition() == hero.GetPosition() && enemy.GetHealth() > 0)
 			{
-				Console.WriteLine($"{enemy.GetName()} is attacking");
-				enemy.Attack();
+                Console.WriteLine($"{enemy.GetName()} is attacking");
+				Battle(enemy);
 			}
 		}
+		//Check for powerUPs
 	}
+	public void Battle(Enemy enemy)
+	{
+        bool endAttack = false;
+        int choice;
+        while (endAttack == false)
+        {
+            //enemy attacks
+            hero.TakeDamage(enemy.GetDamage());
+            if (hero.GetHealth() <= 0)
+            {
+                GameOver = true;
+                endAttack = true;
+				break;
+            }
+            //Wizert Attacks
+            Helpers.PrintActionMenu();
+            choice = Helpers.GetValidInt();
+            if (choice == 1)
+            {
+                enemy.TakeDamage();
+				hero.UseMagicka(3);
+                if (enemy.GetHealth() <= 0)
+                {
+                    endAttack = true;
+					Console.WriteLine(enemy.GetName() + " has been defeated!!");
+                }
+            }
+            else if (choice == 2)
+            {
+				
+				hero.UseMagicka(5);
+                hero.Heal();
+            }
+            else if (choice == 3)
+            {
+				Random rnd = new Random();
+				if (rnd.Next(0, 5) == 1)
+				{
+					endAttack = true;
+					Console.WriteLine(enemy.GetName() + " seems distracted, now is your chance to escape");
+				}
+				else
+				{
+					Console.WriteLine("Can't get away!!");
+				}
+				
+            }
+            else
+            {
+                Console.WriteLine("Enter a valid numerical choice");
+            }
+            
+        }
+    }
 	public void CheckForWin(int direction)
 	{
 		if (exit.GetPositionS() == hero.GetPosition() && direction == exit.GetDirection())
