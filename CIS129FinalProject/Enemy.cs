@@ -8,12 +8,11 @@ public class Enemy
 	private int _health;
 	private int _damage;
 
-	public Enemy(string name, string attack, int health, int damage)
-	{
-		Random rnd = new Random();
+	public Enemy(string name, string attack, int health, int damage, int posX, int posY)
+	{ 
 		_name = name;
 		_attack = attack;
-        _position = new int[,] { { rnd.Next(1,6), rnd.Next(1,6) } };
+        _position = new int[,] { { posX, posY} };
 		_health = health;
 		_damage = damage;
     }
@@ -35,8 +34,13 @@ public class Enemy
 	}
 	public void TakeDamage()
 	{
-		_health -= 5;
-		Console.WriteLine(this._name + " took 5 damage");
+		int damage = 5;
+		if (_health < 5)
+		{
+			damage = _health;
+		}
+		_health -= damage;
+		Console.WriteLine($"{this._name} took {damage} damage. {this._name} health remaining: {_health}");
 	}
 
 }

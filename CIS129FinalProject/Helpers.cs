@@ -24,7 +24,8 @@ public static class Helpers
         Console.WriteLine("Or rather meet the goblins wrath.");
         Console.WriteLine("Fight your enemies or flee,");
         Console.WriteLine("And watch your health points carefully.");
-        Console.WriteLine("");
+        Console.WriteLine("Now here's a hint to make it fair,");
+        Console.WriteLine("You're at the center of a deadly square.");
 
         //FIX ME : Finish instruction verse
 
