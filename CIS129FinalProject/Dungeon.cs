@@ -17,7 +17,6 @@ public class Dungeon
 
 	public Dungeon()
 	{
-		
 		hero = new Wizert();
 		exit = new Exit();
         //instantiate Enemies and create enemies list
@@ -92,8 +91,9 @@ public class Dungeon
         //
         _time = new Stopwatch();
         _time.Start();
+		Console.WriteLine("Your dungeon adventure begins, can you find the exit");
         Helpers.PrintDirMenu();
-		int userInt = Helpers.GetValidInt();
+		int userInt = Helpers.GetValidInt(4);
 		while (GameOver == false)
 		{
 			hero.Move(userInt);
@@ -101,7 +101,7 @@ public class Dungeon
 			if (GameOver == false)
 			{
 				Helpers.PrintDirMenu();
-				userInt = Helpers.GetValidInt();
+				userInt = Helpers.GetValidInt(4);
 				CheckForWin(userInt);
 			}
 		}
@@ -115,7 +115,7 @@ public class Dungeon
 			Console.WriteLine("There's a crack in the wall...");
 			Console.WriteLine("IT'S A DOORWAY!!!");
 			Console.WriteLine("\t1 - Continue");
-            userInt = Helpers.GetValidInt();
+            userInt = Helpers.GetValidInt(1);
             Console.WriteLine("Congratulations -- you have escaped the dungeon!!\n");
 			Console.WriteLine($"Elapsed Time: {elapsedTime}\n");
 
@@ -125,7 +125,7 @@ public class Dungeon
 			Console.WriteLine("You died - Game Over\n\n");
 		}
 		Console.WriteLine("\t1 - Continue");
-		userInt = Helpers.GetValidInt();
+		userInt = Helpers.GetValidInt(1);
 		
 	}
 	public void CheckInteractions()
@@ -162,7 +162,8 @@ public class Dungeon
         int choice;
         while (endAttack == false)
         {
-            //enemy attacks
+			//enemy attacks
+			Console.WriteLine($"Enemy {enemy.GetName()} used attack: {enemy.GetAttack()}");
             hero.TakeDamage(enemy.GetDamage());
             if (hero.GetHealth() <= 0)
             {
@@ -172,10 +173,10 @@ public class Dungeon
             }
             //Wizert Attacks
             Helpers.PrintActionMenu();
-            choice = Helpers.GetValidInt();
+            choice = Helpers.GetValidInt(3);
             if (choice == 1)
             {
-                //maybe add chance to miss here??
+                
 				if (hero.UseMagicka(3))
 				{
 					Console.WriteLine($"Your magic fireball blast strikes the {enemy.GetName()}");

@@ -23,12 +23,7 @@ public static class Helpers
         Console.WriteLine("Will it be your exit path?");
         Console.WriteLine("Or rather meet the goblins wrath.");
         Console.WriteLine("Fight your enemies or flee,");
-        Console.WriteLine("And watch your health points carefully.");
-        Console.WriteLine("Now here's a hint to make it fair,");
-        Console.WriteLine("You're at the center of a deadly square.");
-
-        //FIX ME : Finish instruction verse
-
+        Console.WriteLine("And watch your health points carefully.\n");
         Console.WriteLine("Are you ready?");
         Console.WriteLine("\t1 - Continue to menu");
         Console.WriteLine("\t3 - Exit");
@@ -48,13 +43,13 @@ public static class Helpers
         Console.WriteLine("\t2 - Heal");
         Console.WriteLine("\t3 - Flee");
     }
-    public static int GetValidInt()
+    public static int GetValidInt(int max)
     {
         bool goodValue = false;
         int userInt = 0;
         while (goodValue == false)
         {
-            if (int.TryParse(Console.ReadLine(), out userInt))
+            if (int.TryParse(Console.ReadLine(), out userInt) && userInt <= max && userInt != 0)
             {
                 goodValue = true;
             }

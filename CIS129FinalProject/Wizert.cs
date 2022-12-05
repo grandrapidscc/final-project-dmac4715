@@ -9,7 +9,8 @@ public class Wizert
 
     public Wizert()
     {
-        _position = new int[,] { { 3, 3 } };
+        Random rnd = new Random();
+        _position = new int[,] { { rnd.Next(1,6), rnd.Next(1,6) } };
         _health = 100;
         _magicka = 200;
     }

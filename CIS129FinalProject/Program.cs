@@ -9,7 +9,7 @@ do
 {
     Helpers.PrintMenu();
 
-    selection = Helpers.GetValidInt();
+    selection = Helpers.GetValidInt(3);
     if (selection == 1)
     {
         Dungeon game = new Dungeon();
@@ -18,7 +18,7 @@ do
     else if (selection == 2)
     {
         Helpers.PrintInstructions();
-        selection = Helpers.GetValidInt();
+        selection = Helpers.GetValidInt(3);
     }
     Console.Clear();
 

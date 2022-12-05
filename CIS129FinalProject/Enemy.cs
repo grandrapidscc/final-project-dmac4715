@@ -32,6 +32,10 @@ public class Enemy
 	{
 		return _name; 
 	}
+	public string GetAttack()
+	{
+		return _attack;
+	}
 	public void TakeDamage()
 	{
 		int damage = 5;
